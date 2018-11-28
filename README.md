@@ -1,7 +1,7 @@
 
 ### What you need
 
-Npm install --save React Select
+Npm install --save react-select
 
 ### Explanation
 
