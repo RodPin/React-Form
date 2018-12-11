@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import "./AddOferta.css";
+import "./form.css";
 import Select from "react-select";
 import ARRAYCOMCAMPOS from "./constants/formFields";
 
