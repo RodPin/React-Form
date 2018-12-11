@@ -93,7 +93,7 @@ class App extends Component {
             onSubmit={event => this.sendToApi(event)}
           >
             <div className="areaGeral">
-              <span className="titulo">Adicionar Oferta</span>
+              <span className="titulo">FORMULARIO<span>
 
               <div className="areaInputs">
                 {ARRAYCOMCAMPOS.map(x => {
