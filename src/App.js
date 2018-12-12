@@ -22,7 +22,22 @@ class App extends Component {
     console.log("SEND TO API:");
     console.log(dados);
   }
-
+  
+  // ESTADO INICIAL = ""
+  inicialState() {
+    var INITIAL_STATE = {};
+    INITIAL_STATE["error"] = null;
+    ARRAY_COM_CAMPOS_ADD_USER.map(x => {
+      INITIAL_STATE[x.key] = "";
+    });
+    // console.log(INITIAL_STATE)
+    return INITIAL_STATE;
+  }
+  
+  onChangeText(key, change) {
+    this.setState({ [key]: change.target.value });
+  }
+  
   handleChange(selectedOption, keyy) {
     // this.setState({ [keyy]: selectedOption.value });
     this.state[keyy] = selectedOption.value;
