@@ -22,22 +22,24 @@ class App extends Component {
     console.log("SEND TO API:");
     console.log(dados);
   }
-  
+
   // ESTADO INICIAL = ""
   inicialState() {
     var INITIAL_STATE = {};
     INITIAL_STATE["error"] = null;
-    ARRAY_COM_CAMPOS_ADD_USER.map(x => {
+    ARRAYCOMCAMPOS.map(x => {
       INITIAL_STATE[x.key] = "";
     });
     // console.log(INITIAL_STATE)
     return INITIAL_STATE;
   }
-  
+
   onChangeText(key, change) {
+    console.log(key);
+    console.log(change.target.value);
     this.setState({ [key]: change.target.value });
   }
-  
+
   handleChange(selectedOption, keyy) {
     // this.setState({ [keyy]: selectedOption.value });
     this.state[keyy] = selectedOption.value;
@@ -88,10 +90,10 @@ class App extends Component {
         return (
           <div>
             <input
-              key={key}
-              name={key}
+              value={this.state[key]}
               className="inputs"
               placeholder={display}
+              onChange={change => this.onChangeText(key, change)}
             />
           </div>
         );
@@ -100,43 +102,41 @@ class App extends Component {
 
   render() {
     return (
-      <Fragment>
-        <div className="container">
-          <form
-            ref={formulario => (this.formulario = formulario)}
-            className="addForm"
-            onSubmit={event => this.sendToApi(event)}
-          >
-            <div className="areaGeral">
-              <span className="titulo">FORMULARIO<span>
+      <div className="container">
+        <form
+          ref={formulario => (this.formulario = formulario)}
+          className="addForm"
+          onSubmit={event => this.sendToApi(event)}
+        >
+          <div className="areaGeral">
+            <span className="titulo">FORMULARIO</span>
 
-              <div className="areaInputs">
-                {ARRAYCOMCAMPOS.map(x => {
-                  return (
-                    <div>
-                      {this.renderDivSelect(
-                        x.valores,
-                        x.key,
-                        x.display,
-                        x.tipoDeInput
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-              <button
-                type="submit"
-                className="submitButton"
-                onClick={() => {
-                  alert("Enviado, Checar Console");
-                }}
-              >
-                REGISTRAR
-              </button>
+            <div className="areaInputs">
+              {ARRAYCOMCAMPOS.map(x => {
+                return (
+                  <div>
+                    {this.renderDivSelect(
+                      x.valores,
+                      x.key,
+                      x.display,
+                      x.tipoDeInput
+                    )}
+                  </div>
+                );
+              })}
             </div>
-          </form>{" "}
-        </div>{" "}
-      </Fragment>
+            <button
+              type="submit"
+              className="submitButton"
+              onClick={() => {
+                alert("Enviado, Checar Console");
+              }}
+            >
+              REGISTRAR
+            </button>
+          </div>
+        </form>
+      </div>
     );
   }
 }
